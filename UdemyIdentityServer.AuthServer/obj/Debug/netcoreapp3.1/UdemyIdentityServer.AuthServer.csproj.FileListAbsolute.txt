@@ -34,3 +34,14 @@ D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\obj\Debug\netcoreapp3.1\UdemyIdentityServer.AuthServer.pdb
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\obj\Debug\netcoreapp3.1\UdemyIdentityServer.AuthServer.genruntimeconfig.cache
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\obj\Debug\netcoreapp3.1\UdemyIdentityServer.AuthServer.csproj.CopyComplete
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\IdentityModel.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\IdentityServer4.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\IdentityServer4.Storage.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

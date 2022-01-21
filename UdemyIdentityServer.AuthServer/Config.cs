@@ -43,7 +43,7 @@ namespace UdemyIdentityServer.AuthServer
                     ClientName="First Client App",// Herhangi bir isim veriyoruz.
                     ClientSecrets=new[] {new Secret("sifre".Sha256())},// bir sifre tanımladık
                     AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez
-                    AllowedScopes={ "secondApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                    AllowedScopes={ "firstApi.read", "secondApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
                 },
                 new Client()
                 {

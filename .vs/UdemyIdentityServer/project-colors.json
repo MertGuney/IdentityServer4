@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ce5cb212-e822-4ebd-87c2-f0414b1121a9": {
+      "ProjectGuid": "ce5cb212-e822-4ebd-87c2-f0414b1121a9",
+      "DisplayName": "UdemyIdentityServer.AuthServer",
+      "ColorIndex": 0
+    },
+    "2994ca4b-539b-4121-92b6-e5283530c82f": {
+      "ProjectGuid": "2994ca4b-539b-4121-92b6-e5283530c82f",
+      "DisplayName": "UdemyIdentityServer.FirstClient",
+      "ColorIndex": 1
+    },
+    "1e48fe81-0f95-4e05-80e3-e74e7b036115": {
+      "ProjectGuid": "1e48fe81-0f95-4e05-80e3-e74e7b036115",
+      "DisplayName": "UdemyIdentityServer.SecondClient",
+      "ColorIndex": 2
+    },
+    "af8a4b14-558c-4c27-8270-65b79a486316": {
+      "ProjectGuid": "af8a4b14-558c-4c27-8270-65b79a486316",
+      "DisplayName": "UdemyIdentityServer.FirstApi",
+      "ColorIndex": 3
+    },
+    "4ef4f260-9323-4bff-9fd1-fb94c39672ff": {
+      "ProjectGuid": "4ef4f260-9323-4bff-9fd1-fb94c39672ff",
+      "DisplayName": "UdemyIdentityServer.SecondApi",
+      "ColorIndex": 4
+    },
+    "25558ae2-2671-4030-a296-bc1bb38fe17e": {
+      "ProjectGuid": "25558ae2-2671-4030-a296-bc1bb38fe17e",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

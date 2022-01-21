@@ -32,6 +32,19 @@ namespace UdemyIdentityServer.FirstApi
                 options.Authority = "https://localhost:5001"; //access token nereden yayýnlanýyor ?
                 options.Audience = "resource_firstApi"; // gelen tokenin aud alanýnda ne olucak ?
             });
+
+            services.AddAuthorization(opts =>
+            {
+                opts.AddPolicy("ReadProduct", policy =>
+                {
+                    policy.RequireClaim("scope", "firstApi.read");//yetkilendirme alanlarý kime ait -> scope yetki nedir ilk api okuma
+                });
+                opts.AddPolicy("UpdateOrCreate", policy =>
+                {
+                    policy.RequireClaim("scope", new[] { "firstApi.update", "firstApi.write" });
+                });
+            });
+
             services.AddControllers();
         }
 
