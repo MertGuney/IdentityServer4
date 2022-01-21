@@ -34,5 +34,27 @@ namespace UdemyIdentityServer.AuthServer
             };
         }
 
+        public static IEnumerable<Client> GetClients()
+        {
+            return new List<Client>(){
+                new Client()
+                {
+                    ClientId="firstClient",// Bir kullanıcı adı gibi düşünülebilir. firstClient uygulamamızı temsil ediyor
+                    ClientName="First Client App",// Herhangi bir isim veriyoruz.
+                    ClientSecrets=new[] {new Secret("sifre".Sha256())},// bir sifre tanımladık
+                    AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez
+                    AllowedScopes={"firstApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                },
+                new Client()
+                {
+                    ClientId="secondClient",// secondClient uygulamamızı temsil ediyor
+                    ClientName="Second Client App",// Herhangi bir isim veriyoruz.
+                    ClientSecrets=new[] {new Secret("secret".Sha256())},// bir sifre tanımladık
+                    AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez
+                    AllowedScopes={"firstApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                }
+            };
+        }
+
     }
 }
