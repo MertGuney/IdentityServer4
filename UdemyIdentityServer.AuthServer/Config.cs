@@ -5,7 +5,6 @@ namespace UdemyIdentityServer.AuthServer
 {
     public static class Config
     {
-
         public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>()
@@ -20,6 +19,7 @@ namespace UdemyIdentityServer.AuthServer
                 }
             };
         }
+
         public static IEnumerable<ApiScope> GetApiScopes()
         {
             return new List<ApiScope>()
@@ -43,18 +43,17 @@ namespace UdemyIdentityServer.AuthServer
                     ClientName="First Client App",// Herhangi bir isim veriyoruz.
                     ClientSecrets=new[] {new Secret("sifre".Sha256())},// bir sifre tanımladık
                     AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez
-                    AllowedScopes={"firstApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                    AllowedScopes={ "secondApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
                 },
                 new Client()
                 {
                     ClientId="secondClient",// secondClient uygulamamızı temsil ediyor
                     ClientName="Second Client App",// Herhangi bir isim veriyoruz.
                     ClientSecrets=new[] {new Secret("secret".Sha256())},// bir sifre tanımladık
-                    AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez
-                    AllowedScopes={"firstApi.read", "secondApi.write", "secondApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                    AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez (bu akış refresh Token almaz)
+                    AllowedScopes={"firstApi.read", "firstApi.write", "firstApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
                 }
             };
         }
-
     }
 }

@@ -23,6 +23,10 @@ namespace UdemyIdentityServer.AuthServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Memoryden tanýmladýðýmýz apiResourcelarýmýzý apiScopelarýmýzý ve clientlarýmýzý veriyoruz
+            // AddDeveloperSigningCredential -> bizim için development esnasýnda private ve public key oluþturur
+            services.AddIdentityServer().AddInMemoryApiResources(Config.GetApiResources()).AddInMemoryApiScopes(Config.GetApiScopes()).AddInMemoryClients(Config.GetClients()).AddDeveloperSigningCredential();
+
             services.AddControllersWithViews();
         }
 
@@ -43,7 +47,7 @@ namespace UdemyIdentityServer.AuthServer
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseIdentityServer();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

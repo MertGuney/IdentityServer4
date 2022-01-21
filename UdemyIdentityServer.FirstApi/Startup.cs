@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,12 @@ namespace UdemyIdentityServer.FirstApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // ilk kýsýmda verdiðimiz isimle ikinci kýsýmdaki ayný olmalý cünkü birbirlerini tanýmalarý icin
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            {
+                options.Authority = "https://localhost:5001"; //access token nereden yayýnlanýyor ?
+                options.Audience = "resource_firstApi"; // gelen tokenin aud alanýnda ne olucak ?
+            });
             services.AddControllers();
         }
 
@@ -39,7 +46,7 @@ namespace UdemyIdentityServer.FirstApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
