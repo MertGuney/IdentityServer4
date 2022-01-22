@@ -60,11 +60,12 @@ namespace UdemyIdentityServer.AuthServer
                 new Client()
                 {
                     ClientId="clientMvc",
+                    RequirePkce=false,//bir server side uygulamamız olduğu için false yaptık
                     ClientName="Mvc Client App",
                     ClientSecrets=new[] {new Secret("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
-                    RedirectUris=new List<string>{ "https://localhost:5006/sign-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
-                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, "firstApi.read" }
+                    RedirectUris=new List<string>{ "https://localhost:5006/signin-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
+                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile }
                 }
             };
         }

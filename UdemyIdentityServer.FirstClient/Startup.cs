@@ -35,6 +35,7 @@ namespace UdemyIdentityServer.FirstClient
                 opts.ClientId = "clientMvc";
                 opts.ClientSecret = "secret";
                 opts.ResponseType = "code id_token"; //code -> access token almak için id_token-> token doðru yerden mi gelmiþ diye kontrol etmek için
+                opts.GetClaimsFromUserInfoEndpoint = true;// yaptýðý istek sonucu gelen datalarý user endpointine atýyacak
             });//addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
 
 
@@ -58,7 +59,7 @@ namespace UdemyIdentityServer.FirstClient
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
