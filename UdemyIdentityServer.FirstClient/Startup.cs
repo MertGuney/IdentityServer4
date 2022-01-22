@@ -23,6 +23,21 @@ namespace UdemyIdentityServer.FirstClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies"; // isimlendirme önemli deðil
+                options.DefaultChallengeScheme = "oidc"; // isimlendirme önemli deðil
+            }).AddCookie("Cookies").AddOpenIdConnect("oidc", opts =>
+            {
+                opts.SignInScheme = "Cookies";//kullanýcýnýn login olmasý için default þemayý burada tekrar veriyoruz
+                opts.Authority = "https://localhost:5001";//token daðýtan adres
+                opts.ClientId = "clientMvc";
+                opts.ClientSecret = "secret";
+                opts.ResponseType = "code id_token"; //code -> access token almak için id_token-> token doðru yerden mi gelmiþ diye kontrol etmek için
+            });//addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
+
+
             services.AddControllersWithViews();
         }
 

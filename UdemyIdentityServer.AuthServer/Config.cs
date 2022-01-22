@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -55,6 +56,15 @@ namespace UdemyIdentityServer.AuthServer
                     ClientSecrets=new[] {new Secret("secret".Sha256())},// bir sifre tanımladık
                     AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez (bu akış refresh Token almaz)
                     AllowedScopes={"firstApi.read", "firstApi.write", "firstApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
+                },
+                new Client()
+                {
+                    ClientId="clientMvc",
+                    ClientName="Mvc Client App",
+                    ClientSecrets=new[] {new Secret("secret".Sha256())},
+                    AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
+                    RedirectUris=new List<string>{ "https://localhost:5006/sign-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
+                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, "firstApi.read" }
                 }
             };
         }
