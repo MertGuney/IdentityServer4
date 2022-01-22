@@ -11,7 +11,8 @@ namespace UdemyIdentityServer.AuthServer
             {
                 new ApiResource("resource_firstApi")
                 {
-                    Scopes = { "firstApi.read", "firstApi.write", "firstApi.update" }
+                    Scopes = { "firstApi.read", "firstApi.write", "firstApi.update" },
+                    ApiSecrets= new[]{new Secret("secretfirstapi".Sha256())} //introspection enpoint
                 },
                 new ApiResource("resource_secondApi")
                 {
