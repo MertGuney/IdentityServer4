@@ -1,5 +1,7 @@
 ﻿using IdentityServer4.Models;
+using IdentityServer4.Test;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace UdemyIdentityServer.AuthServer
 {
@@ -54,6 +56,28 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedGrantTypes=GrantTypes.ClientCredentials, // ClientCredential akışına uygun bir token dönücez (bu akış refresh Token almaz)
                     AllowedScopes={"firstApi.read", "firstApi.write", "firstApi.update" }// ilk apide okuma izni, ikinci api icin yazma ve guncelleme iznini verdik
                 }
+            };
+        }
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return new List<IdentityResource>()
+            {
+                new IdentityResources.OpenId(),//bu token kim için üretiliyor? userID (zorunlu)
+                new IdentityResources.Profile(),//https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1 claim detayları
+            };
+        }
+
+        public static IEnumerable<TestUser> GetTestUsers()
+        {
+            return new List<TestUser>()
+            {
+                new TestUser{SubjectId="1",Username="mduzel",Password="password",Claims=new List<Claim>(){
+                new Claim("given_name","Mahmut"),
+                new Claim("family_name","Düzel")}},
+                new TestUser{SubjectId="2",Username="hcan",Password="password",Claims=new List<Claim>(){
+                new Claim("given_name","Hasan"),
+                new Claim("family_name","Can")}}
             };
         }
     }

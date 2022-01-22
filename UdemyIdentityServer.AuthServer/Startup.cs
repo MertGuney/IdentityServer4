@@ -25,7 +25,7 @@ namespace UdemyIdentityServer.AuthServer
         {
             // Memoryden tanýmladýðýmýz apiResourcelarýmýzý apiScopelarýmýzý ve clientlarýmýzý veriyoruz
             // AddDeveloperSigningCredential -> bizim için development esnasýnda private ve public key oluþturur
-            services.AddIdentityServer().AddInMemoryApiResources(Config.GetApiResources()).AddInMemoryApiScopes(Config.GetApiScopes()).AddInMemoryClients(Config.GetClients()).AddDeveloperSigningCredential();
+            services.AddIdentityServer().AddInMemoryApiResources(Config.GetApiResources()).AddInMemoryApiScopes(Config.GetApiScopes()).AddInMemoryClients(Config.GetClients()).AddInMemoryIdentityResources(Config.GetIdentityResources()).AddTestUsers(Config.GetTestUsers().ToList()).AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();
         }
