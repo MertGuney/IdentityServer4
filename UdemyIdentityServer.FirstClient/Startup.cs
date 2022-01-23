@@ -38,6 +38,7 @@ namespace UdemyIdentityServer.FirstClient
                 opts.GetClaimsFromUserInfoEndpoint = true;// Kullanýcý hakkýnda ek claimleri elde ediyoruz
                 opts.SaveTokens = true; // access ve refresh token varsa kaydedilir.
                 opts.Scope.Add("firstApi.read"); // bana bu scope'u da ver
+                opts.Scope.Add("offline_access"); // bana bu scope'u da ver
             });// addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
 
 
