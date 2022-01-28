@@ -66,11 +66,13 @@ namespace UdemyIdentityServer.AuthServer
                     ClientSecrets=new[] {new Secret("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
                     RedirectUris=new List<string>{ "https://localhost:5006/signin-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
+                    PostLogoutRedirectUris=new List<string>{ "https://localhost:5006/signout-callback-oidc" },//auth server ayakta değilse buraya yönlendir.
                     AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, "firstApi.read" },
-                    AccessTokenLifetime=DateTime.Now.AddHours(2).Second, // access token ömrü
+                    AccessTokenLifetime=2*60*60, // access token ömrü
                     AllowOfflineAccess=true, // refresh token oluşturma izni
                     RefreshTokenUsage=TokenUsage.ReUse, // refresh token ömrü boyunca ne kadar kullanılacak?
-                    AbsoluteRefreshTokenLifetime=DateTime.Now.AddMonths(2).Second, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
                 }
             };
         }
