@@ -74,6 +74,23 @@ namespace UdemyIdentityServer.AuthServer
                     RefreshTokenExpiration=TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
                     RequireConsent=true,
+                },
+                new Client()
+                {
+                    ClientId="clientMvc-2",
+                    RequirePkce=false,//bir server side uygulamamız olduğu için false yaptık
+                    ClientName="Second Mvc Client App",
+                    ClientSecrets=new[] {new Secret("secret".Sha256())},
+                    AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
+                    RedirectUris=new List<string>{ "https://localhost:5011/signin-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
+                    PostLogoutRedirectUris=new List<string>{ "https://localhost:5011/signout-callback-oidc" },//auth server ayakta değilse buraya yönlendir.
+                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, "firstApi.read" ,"CountryAndCity","Roles"},
+                    AccessTokenLifetime=2*60*60, // access token ömrü
+                    AllowOfflineAccess=true, // refresh token oluşturma izni
+                    RefreshTokenUsage=TokenUsage.ReUse, // refresh token ömrü boyunca ne kadar kullanılacak?
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
+                    RequireConsent=true,
                 }
             };
         }

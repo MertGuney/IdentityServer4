@@ -1,13 +1,10 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 
 namespace UdemyIdentityServer.SecondClient
 {
@@ -23,6 +20,37 @@ namespace UdemyIdentityServer.SecondClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies"; // isimlendirme önemli deðil
+                options.DefaultChallengeScheme = "oidc"; // isimlendirme önemli deðil
+            }).AddCookie("Cookies", opts =>
+            {
+                opts.AccessDeniedPath = "/Home/AccessDenied";
+            }).AddOpenIdConnect("oidc", opts =>
+            {
+                opts.SignInScheme = "Cookies";// kullanýcýnýn login olmasý için default þemayý burada tekrar veriyoruz
+                opts.Authority = "https://localhost:5001";//token daðýtan adres
+                opts.ClientId = "clientMvc-2";
+                opts.ClientSecret = "secret";
+                opts.ResponseType = "code id_token"; // code -> access token almak için id_token-> token doðru yerden mi gelmiþ diye kontrol etmek için
+                opts.GetClaimsFromUserInfoEndpoint = true;// Kullanýcý hakkýnda ek claimleri elde ediyoruz
+                opts.SaveTokens = true; // access ve refresh token varsa kaydedilir.
+                opts.Scope.Add("firstApi.read"); // bana bu scope'u da ver
+                opts.Scope.Add("offline_access"); // bana bu scope'u da ver
+                opts.Scope.Add("CountryAndCity"); // bana bu scope'u da ver
+                opts.Scope.Add("Roles"); // bana bu scope'u da ver
+
+                opts.ClaimActions.MapUniqueJsonKey("country", "country");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
+                opts.ClaimActions.MapUniqueJsonKey("city", "city");
+                opts.ClaimActions.MapUniqueJsonKey("role", "role");
+
+                opts.TokenValidationParameters = new TokenValidationParameters
+                {
+                    RoleClaimType = "role"
+                }; // role bazlý bir doðrulama var hangi rolü seçelim diyor tanýmladýðýmýz rolü veriyoruz
+            });// addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
+
             services.AddControllersWithViews();
         }
 
@@ -43,7 +71,7 @@ namespace UdemyIdentityServer.SecondClient
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

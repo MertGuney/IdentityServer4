@@ -119,3 +119,4 @@ D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstClien
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstClient\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstClient\obj\Debug\netcoreapp3.1\Razor\Views\User\AdminAction.cshtml.g.cs
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstClient\obj\Debug\netcoreapp3.1\Razor\Views\User\CustomerAction.cshtml.g.cs
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstClient\obj\Debug\netcoreapp3.1\Razor\Views\Home\AccessDenied.cshtml.g.cs

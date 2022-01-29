@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using UdemyIdentityServer.FirstClient.Services;
 
 namespace UdemyIdentityServer.FirstClient
 {
@@ -25,12 +21,17 @@ namespace UdemyIdentityServer.FirstClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+            services.AddScoped<IApiResourceHttpClient, ApiResourceHttpClient>();
 
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies"; // isimlendirme önemli deðil
                 options.DefaultChallengeScheme = "oidc"; // isimlendirme önemli deðil
-            }).AddCookie("Cookies").AddOpenIdConnect("oidc", opts =>
+            }).AddCookie("Cookies", opts =>
+            {
+                opts.AccessDeniedPath = "/Home/AccessDenied";
+            }).AddOpenIdConnect("oidc", opts =>
             {
                 opts.SignInScheme = "Cookies";// kullanýcýnýn login olmasý için default þemayý burada tekrar veriyoruz
                 opts.Authority = "https://localhost:5001";//token daðýtan adres
