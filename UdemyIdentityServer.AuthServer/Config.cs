@@ -67,7 +67,7 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
                     RedirectUris=new List<string>{ "https://localhost:5006/signin-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
                     PostLogoutRedirectUris=new List<string>{ "https://localhost:5006/signout-callback-oidc" },//auth server ayakta değilse buraya yönlendir.
-                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, "firstApi.read" ,"CountryAndCity"},
+                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, "firstApi.read" ,"CountryAndCity","Roles"},
                     AccessTokenLifetime=2*60*60, // access token ömrü
                     AllowOfflineAccess=true, // refresh token oluşturma izni
                     RefreshTokenUsage=TokenUsage.ReUse, // refresh token ömrü boyunca ne kadar kullanılacak?
@@ -84,7 +84,11 @@ namespace UdemyIdentityServer.AuthServer
             {
                 new IdentityResources.OpenId(),//bu token kim için üretiliyor? userID (zorunlu)
                 new IdentityResources.Profile(),//https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1 claim detayları
-                new IdentityResource(){ Name="CountryAndCity",DisplayName="CountryAndCity",Description="Kullanıcının ülke ve şehir bilgisi",UserClaims=new[]{"country","city"}}
+                new IdentityResource(){ Name="CountryAndCity",DisplayName="CountryAndCity",Description="Kullanıcının ülke ve şehir bilgisi",UserClaims=new[]{"country","city"}},
+                new IdentityResource()
+                {
+                    Name="Roles",DisplayName="Roles",Description="Kullanıcı rolleri",UserClaims=new[] {"role"}
+                }
             };
         }
 
@@ -96,12 +100,14 @@ namespace UdemyIdentityServer.AuthServer
                 new Claim("given_name","Mahmut"),
                 new Claim("family_name","Düzel"),
                 new Claim("country","Turkey"),
-                new Claim("city","Ankara")}},
+                new Claim("city","Ankara"),
+                new Claim("role","Admin")}},
                 new TestUser{SubjectId="2",Username="hcan",Password="password",Claims=new List<Claim>(){
                 new Claim("given_name","Hasan"),
                 new Claim("family_name","Can"),
                 new Claim("country","Turkey"),
-                new Claim("city","Istanbul")}}
+                new Claim("city","Istanbul"),
+                new Claim("role","Customer")}}
             };
         }
     }

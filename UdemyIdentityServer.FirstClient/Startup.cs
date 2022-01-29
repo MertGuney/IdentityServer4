@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,16 @@ namespace UdemyIdentityServer.FirstClient
                 opts.Scope.Add("firstApi.read"); // bana bu scope'u da ver
                 opts.Scope.Add("offline_access"); // bana bu scope'u da ver
                 opts.Scope.Add("CountryAndCity"); // bana bu scope'u da ver
+                opts.Scope.Add("Roles"); // bana bu scope'u da ver
 
                 opts.ClaimActions.MapUniqueJsonKey("country", "country");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
-                opts.ClaimActions.MapUniqueJsonKey("city", "city");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
+                opts.ClaimActions.MapUniqueJsonKey("city", "city");
+                opts.ClaimActions.MapUniqueJsonKey("role", "role");
+
+                opts.TokenValidationParameters = new TokenValidationParameters
+                {
+                    RoleClaimType = "role"
+                }; // role bazlý bir doðrulama var hangi rolü seçelim diyor tanýmladýðýmýz rolü veriyoruz
             });// addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
 
 

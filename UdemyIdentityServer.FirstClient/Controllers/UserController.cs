@@ -73,5 +73,15 @@ namespace UdemyIdentityServer.FirstClient.Controllers
             await HttpContext.SignOutAsync("Cookies"); // startup DefaultScheme
             await HttpContext.SignOutAsync("oidc"); //startup DefaultChallengeScheme
         }
+        [Authorize(Roles ="Admin")]
+        public IActionResult AdminAction()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Admin,Customer")]
+        public IActionResult CustomerAction()
+        {
+            return View();
+        }
     }
 }
