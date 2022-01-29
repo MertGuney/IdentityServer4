@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,10 @@ namespace UdemyIdentityServer.FirstClient
                 opts.SaveTokens = true; // access ve refresh token varsa kaydedilir.
                 opts.Scope.Add("firstApi.read"); // bana bu scope'u da ver
                 opts.Scope.Add("offline_access"); // bana bu scope'u da ver
+                opts.Scope.Add("CountryAndCity"); // bana bu scope'u da ver
+
+                opts.ClaimActions.MapUniqueJsonKey("country", "country");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
+                opts.ClaimActions.MapUniqueJsonKey("city", "city");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
             });// addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
 
 
