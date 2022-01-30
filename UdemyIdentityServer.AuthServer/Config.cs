@@ -67,7 +67,14 @@ namespace UdemyIdentityServer.AuthServer
                     AllowedGrantTypes=GrantTypes.Hybrid,// firstclient tarafında "code id_token" seklinde tanımladığımız için hybrid sadece code olsaydı code seçilirdi.
                     RedirectUris=new List<string>{ "https://localhost:5006/signin-oidc" },// firstclient uygulamasına openid connect kütüphanesini eklediğimizde böyle bir yol oluşuyor bu url token alma işlemini gerçekleştirir.
                     PostLogoutRedirectUris=new List<string>{ "https://localhost:5006/signout-callback-oidc" },//auth server ayakta değilse buraya yönlendir.
-                    AllowedScopes={IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, "firstApi.read" ,"CountryAndCity","Roles"},
+                    AllowedScopes={
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "firstApi.read",
+                        "CountryAndCity",
+                        "Roles"},
                     AccessTokenLifetime=2*60*60, // access token ömrü
                     AllowOfflineAccess=true, // refresh token oluşturma izni
                     RefreshTokenUsage=TokenUsage.ReUse, // refresh token ömrü boyunca ne kadar kullanılacak?
@@ -99,6 +106,7 @@ namespace UdemyIdentityServer.AuthServer
         {
             return new List<IdentityResource>()
             {
+                new IdentityResources.Email(),
                 new IdentityResources.OpenId(),//bu token kim için üretiliyor? userID (zorunlu)
                 new IdentityResources.Profile(),//https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1 claim detayları
                 new IdentityResource(){ Name="CountryAndCity",DisplayName="CountryAndCity",Description="Kullanıcının ülke ve şehir bilgisi",UserClaims=new[]{"country","city"}},

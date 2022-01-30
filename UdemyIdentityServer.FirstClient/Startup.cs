@@ -44,6 +44,7 @@ namespace UdemyIdentityServer.FirstClient
                 opts.Scope.Add("offline_access"); // bana bu scope'u da ver
                 opts.Scope.Add("CountryAndCity"); // bana bu scope'u da ver
                 opts.Scope.Add("Roles"); // bana bu scope'u da ver
+                opts.Scope.Add("email"); // bana bu scope'u da ver
 
                 opts.ClaimActions.MapUniqueJsonKey("country", "country");// 2. parametre config içerisinde tanýmladýðýmýz deðeri 
                 opts.ClaimActions.MapUniqueJsonKey("city", "city");
@@ -51,7 +52,8 @@ namespace UdemyIdentityServer.FirstClient
 
                 opts.TokenValidationParameters = new TokenValidationParameters
                 {
-                    RoleClaimType = "role"
+                    RoleClaimType = "role",
+                    NameClaimType = "name"
                 }; // role bazlý bir doðrulama var hangi rolü seçelim diyor tanýmladýðýmýz rolü veriyoruz
             });// addcookie addopenidconnect -> yukarýda verdiðimiz scheme adlarý ile ayný olmalý 
 

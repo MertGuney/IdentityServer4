@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using UdemyIdentityServer.FirstClient.Models;
@@ -28,7 +29,6 @@ namespace UdemyIdentityServer.FirstClient.Controllers
         {
             HttpClient client = await _apiResourceHttpClient.GetHttpClient(); // token set edilmiş bir client nesnesi geliyor
             List<Product> products = new List<Product>();
-
 
             // bu işlemler gereksiz cünkü tokenı cookie den alıcaz
             //HttpClient client = new HttpClient();
