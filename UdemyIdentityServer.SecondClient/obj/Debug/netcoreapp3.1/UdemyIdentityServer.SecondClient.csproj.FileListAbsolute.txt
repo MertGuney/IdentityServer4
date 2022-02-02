@@ -33,7 +33,6 @@ D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClie
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\obj\Debug\netcoreapp3.1\UdemyIdentityServer.SecondClient.pdb
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\obj\Debug\netcoreapp3.1\UdemyIdentityServer.SecondClient.genruntimeconfig.cache
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\obj\Debug\netcoreapp3.1\UdemyIdentityServer.SecondClient.csproj.CopyComplete
-D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\obj\Debug\netcoreapp3.1\UdemyIdentityServer.SecondClient.csproj.AssemblyReference.cache
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.SecondClient\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll

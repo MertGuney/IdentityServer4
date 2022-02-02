@@ -91,3 +91,4 @@ D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.AuthServer\obj\Debug\netcoreapp3.1\UdemyIdentityServer.AuthServer.csproj.AssemblyReference.cache

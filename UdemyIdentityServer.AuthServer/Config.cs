@@ -98,7 +98,27 @@ namespace UdemyIdentityServer.AuthServer
                     RefreshTokenExpiration=TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
                     RequireConsent=true,
-                }
+                },
+                new Client()
+                {
+                    ClientId="clientMvc-resourceOwner",
+                    ClientName="Mvc Client App",
+                    ClientSecrets=new[] {new Secret("secret".Sha256())},
+                    AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes={
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "firstApi.read",
+                        "CountryAndCity",
+                        "Roles"},
+                    AccessTokenLifetime=2*60*60, // access token ömrü
+                    AllowOfflineAccess=true, // refresh token oluşturma izni
+                    RefreshTokenUsage=TokenUsage.ReUse, // refresh token ömrü boyunca ne kadar kullanılacak?
+                    RefreshTokenExpiration=TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime=(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, //absolute kesin bitiş tarihi sliding ise her erişimde yeniden uzayan tarih
+                },
             };
         }
 

@@ -25,4 +25,3 @@ D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstApi\b
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstApi\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstApi\obj\Debug\netcoreapp3.1\UdemyIdentityServer.FirstApi.csproj.CopyComplete
-D:\Udemy\MyUdemyWorks\API-3.1\UdemyIdentityServer\UdemyIdentityServer.FirstApi\obj\Debug\netcoreapp3.1\UdemyIdentityServer.FirstApi.csproj.AssemblyReference.cache

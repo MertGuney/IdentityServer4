@@ -67,18 +67,18 @@ namespace UdemyIdentityServer.FirstClient.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task LogOut()
+        public async Task<IActionResult> LogOut()
         {
-
             await HttpContext.SignOutAsync("Cookies"); // startup DefaultScheme
-            await HttpContext.SignOutAsync("oidc"); //startup DefaultChallengeScheme
+            //await HttpContext.SignOutAsync("oidc"); //startup DefaultChallengeScheme
+            return RedirectToAction("Index", "Home");
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="admin")]
         public IActionResult AdminAction()
         {
             return View();
         }
-        [Authorize(Roles = "Admin,Customer")]
+        [Authorize(Roles = "admin,customer")]
         public IActionResult CustomerAction()
         {
             return View();
