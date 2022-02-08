@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using UdemyIdentityServer.AuthServer.Models;
 using UdemyIdentityServer.AuthServer.Repositories;
@@ -33,14 +34,24 @@ namespace UdemyIdentityServer.AuthServer
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDb"));
             });
 
+            var assemblyName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
             // Memoryden tanýmladýðýmýz apiResourcelarýmýzý apiScopelarýmýzý ve clientlarýmýzý veriyoruz
             // AddDeveloperSigningCredential -> bizim için development esnasýnda private ve public key oluþturur
             services.AddIdentityServer()
-                .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryApiScopes(Config.GetApiScopes())
-                .AddInMemoryClients(Config.GetClients())
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddTestUsers(Config.GetTestUsers().ToList())
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = c => c.UseSqlServer(Configuration.GetConnectionString("LocalDb"), sqlopts => sqlopts.MigrationsAssembly(assemblyName));
+                })
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = c => c.UseSqlServer(Configuration.GetConnectionString("LocalDb"), sqlopts => sqlopts.MigrationsAssembly(assemblyName));
+                })
+                //.AddInMemoryApiResources(Config.GetApiResources())
+                //.AddInMemoryApiScopes(Config.GetApiScopes())
+                //.AddInMemoryClients(Config.GetClients())
+                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
+                //.AddTestUsers(Config.GetTestUsers().ToList())
                 .AddDeveloperSigningCredential()
                 .AddProfileService<CustomProfileService>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();

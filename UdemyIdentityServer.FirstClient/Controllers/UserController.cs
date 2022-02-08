@@ -40,8 +40,8 @@ namespace UdemyIdentityServer.FirstClient.Controllers
             var refreshToken = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
 
             RefreshTokenRequest request = new RefreshTokenRequest();
-            request.ClientId = _configuration["Client2:ClientId"];
-            request.ClientSecret = _configuration["Client2:ClientSecret"];
+            request.ClientId = _configuration["ClientResourceOwner:ClientId"];
+            request.ClientSecret = _configuration["ClientResourceOwner:ClientSecret"];
             request.RefreshToken = refreshToken;
             request.Address = disco.TokenEndpoint;
             var token = await httpClient.RequestRefreshTokenAsync(request);
